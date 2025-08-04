@@ -49,10 +49,10 @@ npm run dev
 
 ### Conteúdo:
 
-#### [1) Introdução à Linguagem Typescript](/camillofalcao/curso-ts/P01Introducao)
-#### [2) Entendendo os Tipos na Linguagem Typescript](/camillofalcao/curso-ts/P02Tipos)
-#### [3) Funções - EM CONSTRUÇÃO](/camillofalcao/curso-ts/P03Funcoes)
-#### [4) Objetos - EM CONSTRUÇÃO](/camillofalcao/curso-ts/P04Objetos)
-#### [5) Manipulando Tipos - EM CONSTRUÇÃO](/camillofalcao/curso-ts/P05ManipulandoTipos)
-#### [6) Classes - EM CONSTRUÇÃO](/camillofalcao/curso-ts/P06Classes)
-#### [7) Módulos - EM CONSTRUÇÃO](/camillofalcao/curso-ts/P07Modulos)
+#### [1) Introdução à Linguagem Typescript](/P01Introducao)
+#### [2) Entendendo os Tipos na Linguagem Typescript](/P02Tipos)
+#### [3) Funções - EM CONSTRUÇÃO](/P03Funcoes)
+#### [4) Objetos - EM CONSTRUÇÃO](/P04Objetos)
+#### [5) Manipulando Tipos - EM CONSTRUÇÃO](/P05ManipulandoTipos)
+#### [6) Classes - EM CONSTRUÇÃO](/P06Classes)
+#### [7) Módulos - EM CONSTRUÇÃO](/P07Modulos)
