@@ -1,2 +1,58 @@
-# curso-ts
-Curso Introdutório de Typescript
+# Curso Introdutório da Linguagem Typescript
+
+Este é um curso introdutório da linguagem Typescript. Espera-se que o aluno já tenha conhecimentos básicos de Algoritmos e da linguagem Javascript. Você pode obter um material da linguagem Javascript na pasta "Material" do seguinte repositório:
+https://github.com/camillofalcao/curso-intro-web
+
+
+<details>
+
+<summary>Não sabe como instalar e executar? Expanda aqui</summary>
+
+#### 0) Instale o compilador Typescript:
+```
+npm install typescript --save-dev
+```
+
+#### 1) Execute o comando:
+```
+npm init -y
+```
+#### 2) Crie o arquivo typescript.config.json com o seguinte conteúdo:
+```json
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "CommonJS",
+    "outDir": "out"
+  }
+}
+```
+#### 3) Adicione a propriedade `dev` ao objeto `scripts` no arquivo **package.json**:
+```js
+  "scripts": {
+    "dev": "tsc src/index.ts && node src"
+  },
+```
+
+#### 4) Crie a pasta **src** e o arquivo **index.ts** com o seguinte conteúdo:
+```ts
+let mensagem: string = 'Olá mundo!';
+console.log(mensagem);
+```
+
+#### 5) Execute o seu código:
+```
+npm run dev
+```
+
+</details>
+
+### Conteúdo:
+
+#### [1) Introdução à Linguagem Typescript](/camillofalcao/curso-ts/P01Introducao)
+#### [2) Entendendo os Tipos na Linguagem Typescript](/camillofalcao/curso-ts/P02Tipos)
+#### [3) Funções - EM CONSTRUÇÃO](/camillofalcao/curso-ts/P03Funcoes)
+#### [4) Objetos - EM CONSTRUÇÃO](/camillofalcao/curso-ts/P04Objetos)
+#### [5) Manipulando Tipos - EM CONSTRUÇÃO](/camillofalcao/curso-ts/P05ManipulandoTipos)
+#### [6) Classes - EM CONSTRUÇÃO](/camillofalcao/curso-ts/P06Classes)
+#### [7) Módulos - EM CONSTRUÇÃO](/camillofalcao/curso-ts/P07Modulos)
