@@ -1,6 +1,6 @@
 # Trabalhando com Tipos e Funções na Linguagem Typescript
 
-Veja o trecho de código Javasript abaixo:
+Veja o trecho de código Javascript abaixo:
 
 ```js
 var ano3Mil = new Date(3000,1, 1);

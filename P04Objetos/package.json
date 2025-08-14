@@ -1,0 +1,12 @@
+{
+  "name": "p04objetos",
+  "version": "1.0.0",
+  "description": "É comum a utilização de objetos em Javascript para agrupamento e transferência de dados. Em Typescript, os objetos possuem tipos, que são chamados de *Object Types*.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsc src/index.ts && node src"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
