@@ -53,6 +53,6 @@ npm run dev
 #### [2) Entendendo os Tipos na Linguagem Typescript](/P02Tipos)
 #### [3) Trabalhando com Tipos e Funções na Linguagem Typescript](/P03Funcoes)
 #### [4) Utilizando Tipos em Objetos na Linguagem Typescript](/P04Objetos)
-#### [5) Manipulando Tipos - EM CONSTRUÇÃO](/P05ManipulandoTipos)
-#### [6) Classes - EM CONSTRUÇÃO](/P06Classes)
+#### [5) Classes em Typescript - EM CONSTRUÇÃO](/P05Classes)
+#### [6) Manipulando Tipos - EM CONSTRUÇÃO](/P06ManipulandoTipos)
 #### [7) Módulos - EM CONSTRUÇÃO](/P07Modulos)

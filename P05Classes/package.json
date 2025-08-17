@@ -1,0 +1,12 @@
+{
+  "name": "p05classes",
+  "version": "1.0.0",
+  "description": "É possível criar classes em Typescript, assim como é possível fazê-lo em Javascript moderno. A vantagem do uso de Typescript está na adição de tipos nos atributos e nos parâmetros dos métodos.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsc && node dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
