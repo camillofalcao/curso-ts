@@ -10,7 +10,7 @@ https://github.com/camillofalcao/curso-intro-web
 
 #### 0) Instale o compilador Typescript:
 ```
-npm install typescript --save-dev
+npm install typescript -g
 ```
 
 #### 1) Execute o comando:
@@ -54,5 +54,4 @@ npm run dev
 #### [3) Trabalhando com Tipos e Funções na Linguagem Typescript](/P03Funcoes)
 #### [4) Utilizando Tipos em Objetos na Linguagem Typescript](/P04Objetos)
 #### [5) Classes em Typescript - EM CONSTRUÇÃO](/P05Classes)
-#### [6) Manipulando Tipos - EM CONSTRUÇÃO](/P06ManipulandoTipos)
-#### [7) Módulos - EM CONSTRUÇÃO](/P07Modulos)
+#### [6) Outros Recursos da Linguagem Typescript](/P06Outros)
