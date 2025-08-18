@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es6",               // Define a versão do ECMAScript para a saída
+    "module": "esnext",            // Define o sistema de módulos (esnext é recomendado para módulos ES6)
+    "lib": ["es6", "dom"],         // Inclui bibliotecas padrão do ES6 e do DOM
+    "outDir": "./dist",            // Define o diretório de saída para os arquivos JavaScript compilados
+    "rootDir": "./src",            // Define o diretório raiz do código TypeScript
+    "strict": true,                // Habilita verificações estritas de tipo (opcional, mas recomendado)
+    "esModuleInterop": true,       // Permite interoperabilidade com módulos CommonJS
+    "skipLibCheck": true,          // Ignora erros de verificação em arquivos de biblioteca
+    "moduleResolution": "node",    // Define o algoritmo de resolução de módulos (recomendado para Node.js)
+    "sourceMap": true,             // Gera arquivos de source map para depuração
+    "declaration": true,           // Gera arquivos de definição de tipo (.d.ts)
+    "declarationDir": "./types"    // Define o diretório de saída para os arquivos de definição
+  },
+  "include": ["src/**/*"],         // Inclui todos os arquivos TypeScript na pasta 'src'
+  "exclude": ["node_modules"]      // Exclui a pasta 'node_modules'
+}
