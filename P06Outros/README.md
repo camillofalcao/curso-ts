@@ -53,31 +53,31 @@ Lembre-se que para executar, basta digitar: `npm run dev`.
 
 Generics nos permite criar componentes que trabalham com uma variedade de tipos de dados ao invés de apenas um tipo. Ele faz isso permitindo que o programador usuário do componente possa especificar o(s) tipo(s) de dados utilizado(s) na inicialização do componente.
 
-Vamos iniciar primeiramente declarando duas variáveis e seus tipos e criando um código que nos permite receber um valor por parâmetro, passar este valor para a função `log` e retornar este mesmo valor (este código ainda não utiliza generics):
+Vamos iniciar primeiramente declarando duas variáveis e seus tipos e criando um código que nos permite receber um valor por parâmetro, passar este valor para a função `atualizar` e retornar este mesmo valor (este código ainda não utiliza generics):
 
 ```ts
 let nome: string = "Ana";
 let idade: number = 20;
 
-function logarString(valor: string) : string {
-    console.log(valor);
-    return valor;
+function atualizarNumber(original: number, novo: number) : number {
+    console.log(`${original} -> ${novo}`);    
+    return novo;
 }
 
-function logarNumber(valor: number) : number {
-    console.log(valor);
-    return valor;
+function atualizarString(original: string, novo: string) : string {
+    console.log(`${original} -> ${novo}`);    
+    return novo;
 }
 
-let nomeMaiusculas = logarString(nome).toUpperCase();
-let proximaIdade = logarNumber(idade) + 1;
+nome = atualizarString(nome, nome.toUpperCase());
+idade = atualizarNumber(idade, idade + 1);
 
-console.log(nomeMaiusculas, "terá", proximaIdade, "anos no próximo ano.");
+console.log(nome, "terá", idade, "anos no próximo ano.");
 ```
 
-Veja que construímos duas funções que recebem um valor por parâmetro, passa este valor por parâmetro para a função `console.log` e, em seguida, retorna o próprio valor recebido. Com essas funções, é possível logar o valor na mesma linha em que ele foi utilizado. 
+Veja que construímos duas funções que recebem um valor por parâmetro, passa este valor por parâmetro para a função `console.log` e, em seguida, retorna o próprio valor recebido. Com essas funções, é possível logar a troca de valor na mesma linha em que a mesma é atualizada.
 
-Estas funções são muito simples e estão aqui somente para serem utilizadas como exemplo. Verificando as mesmas, você já deve ter notado que terá que criar uma função dessa para cada tipo que quiser logar, o que pode incluir criar funções para logar objetos e isso facilmente poderá gerar uma quantidade de funções tão grande que gerará muita dificuldade de manutenção.
+Estas funções são muito simples e estão aqui somente para serem utilizadas como exemplo. Verificando as mesmas, você já deve ter notado que terá que criar uma função dessa para cada tipo que quiser logar a atualização, o que pode incluir criar funções para logar objetos e isso facilmente poderá gerar uma quantidade de funções tão grande que gerará muita dificuldade de manutenção.
 
 Vamos então criar uma única função do tipo `any`:
 
@@ -85,18 +85,37 @@ Vamos então criar uma única função do tipo `any`:
 let nome: string = "Ana";
 let idade: number = 20;
 
-function logar(valor: any) : any {
-    console.log(valor);
-    return valor;
+function atualizar(original: any, novo: any) : any {
+    console.log(`${original} -> ${novo}`);    
+    return novo;
 }
 
-let nomeMaiusculas = logar(nome).toUpperCase();
-let proximaIdade = logar(idade) + 1;
+nome = atualizar(nome, nome.toUpperCase());
+idade = atualizar(idade, idade + 1);
 
-console.log(nomeMaiusculas, "terá", proximaIdade, "anos no próximo ano.");
+console.log(nome, "terá", idade, "anos no próximo ano.");
 ```
 
-Agora o nosso código funciona e temos apenas uma única função. O problema é que, se você parar o mouse em cima das variáveis `nomeMaiusculas` e `proximaIdade`, verá que o tipo delas é `any`. Lembre-se que um dos motivos de se utilizar Typescript é exatamente para evitar a tipagem fraca.
+Aparentemente funcionou, mas agora você entenderá melhor que não se deve utilizar o tipo `any` em Typescript:
+
+```ts
+let nome: string = "Ana";
+let idade: number = 20;
+
+function atualizar(original: any, novo: any) : any {
+    console.log(`${original} -> ${novo}`);    
+    return novo;
+}
+
+nome = atualizar(nome, nome.toUpperCase());
+idade = atualizar(nome, nome.toUpperCase());
+
+console.log(nome, "terá", idade, "anos no próximo ano.");
+```
+
+Se você executou o código acima, pode ter percebido que o tipo `any` nos ajudou a burlar o tipo da variável `idade`, que deveria receber apenas números.
+
+Lembre-se que um dos motivos de se utilizar Typescript é exatamente para evitar a tipagem fraca.
 
 Generics solucionam isso ao permitir que seja utilizado um nome para o tipo que será passado no momento da utilização do método. Note que em cada chamada do método abaixo, o tipo que chamamos de `Type` está sendo passado entre `<>`:
 
@@ -104,18 +123,18 @@ Generics solucionam isso ao permitir que seja utilizado um nome para o tipo que 
 let nome: string = "Ana";
 let idade: number = 20;
 
-function logar<Type>(valor: Type) : Type {
-    console.log(valor);
-    return valor;
+function atualizar<Type>(original: Type, novo: Type) : Type {
+    console.log(`${original} -> ${novo}`);    
+    return novo;
 }
 
-let nomeMaiusculas = logar<string>(nome).toUpperCase();
-let proximaIdade = logar<number>(idade) + 1;
+nome = atualizar<string>(nome, nome.toUpperCase());
+idade = atualizar<number>(idade, idade + 1);
 
-console.log(nomeMaiusculas, "terá", proximaIdade, "anos no próximo ano.");
+console.log(nome, "terá", idade, "anos no próximo ano.");
 ```
 
-Note que agora os tipos das duas últimas variáveis declaradas estão corretos (string e number). Quando se coloca `<string>` após o nome do método logar, estamos identificando que `Type` (veja `<Type>` após o nome do método) é **string** e só podemos passar uma **string** para este método neste caso.
+Note que agora os tipos das duas últimas variáveis declaradas estão corretos (string e number). Quando se coloca `<string>` após o nome do método `atualizar`, estamos identificando que `Type` (veja `<Type>` após o nome do método) é **string** e só podemos passar uma **string** para este método neste caso.
 
 O Typescript também consegue, em alguns casos, inferir o tipo automaticamente. Note no código abaixo que Type foi inferido pelo tipo do parâmetro passado (se passo uma string, então `Type` só pode ser string):
 
@@ -123,15 +142,15 @@ O Typescript também consegue, em alguns casos, inferir o tipo automaticamente. 
 let nome: string = "Ana";
 let idade: number = 20;
 
-function logar<Type>(valor: Type) : Type {
-    console.log(valor);
-    return valor;
+function atualizar<Type>(original: Type, novo: Type) : Type {
+    console.log(`${original} -> ${novo}`);    
+    return novo;
 }
 
-let nomeMaiusculas = logar(nome).toUpperCase();
-let proximaIdade = logar(idade) + 1;
+nome = atualizar(nome, nome.toUpperCase());
+idade = atualizar(idade, idade + 1);
 
-console.log(nomeMaiusculas, "terá", proximaIdade, "anos no próximo ano.");
+console.log(nome, "terá", idade, "anos no próximo ano.");
 ```
 
 Entenda também que o nome `Type` não é uma palavra reservada para uso com Generics. Podemos dar o nome que quisermos para o nosso tipo. No código abaixo, chamei o tipo de `T`:
@@ -180,7 +199,7 @@ exemplo(true);
 
 #### Entendendo o comando keyof
 
-Para que possamos apresentar um exemplo mais sofisticado sobre restrições (constraints) em Generics, vamos primeiramente entender o comando `keyof`, que retorna um tipo composto pelas chaves de um objeto. Note que em Javascript os nomes das propriedades são chaves, ou seja, obj.nome é o mesmo que obj["nome"].
+Para que possamos apresentar um exemplo mais sofisticado sobre restrições (constraints) em Generics, vamos primeiramente entender o comando `keyof`, que retorna um tipo composto pelas chaves de um objeto. Note que em Javascript os nomes das propriedades são chaves, ou seja, `obj.nome` é o mesmo que `obj["nome"]`.
 
 ```ts
 class Pessoa {
@@ -242,21 +261,21 @@ console.log(pilha.estaVazia()); // true
 
 Note que utilizamos o tipo `T` na classe, o que nos obriga a definir `T` ao instanciar a classe Pilha. Com isso, temos uma pilha genérica.
 
-### Módulos
+## Módulos
 
-É possível modularizar a sua aplicação em Typescript utilizando módulos ES6. Qualquer arquivo que contenha uma instrução `import` ou `export` é considerado um módulo em Typescript.
+É possível modularizar a sua aplicação em Typescript utilizando módulos ES6 (ECMA Script 6). Qualquer arquivo que contenha uma instrução `import` ou `export` é considerado um módulo em Typescript.
 
 Qualquer arquivo que não seja um módulo é tratado como um script cujo conteúdo está disponível no escopo global, logo também está disponível para todos os módulos.
 
 Cada módulo é executado em seu próprio escopo, que não é o escopo global. Variáveis, classes, funções e qualquer outro recurso do módulo não podem ser acessados fora do módulo, exceto se o mesmo tiver sido exportado (`export` ou `export default`). Um módulo pode conter zero ou no máximo um `export default`, porém pode conter zero, um ou vários `export`. O principal recurso de um módulo, que pode ser importado diretamente, mesmo sem indicar o nome do recurso, deve ser exportado como `export default`.
 
-Para trabalharmos com módulos, você precisa adicionar `"type": "module"` no `package.json`, que deve terminar com o seguinte conteúdo:
+Para trabalharmos com módulos, você precisa adicionar `"type": "module"` no `package.json`, como no exemplo abaixo:
 
 ```ts
 {
-  "name": "p05classes",
+  "name": "p06Outros",
   "version": "1.0.0",
-  "description": "É possível criar classes em Typescript, assim como é possível fazê-lo em Javascript moderno. A vantagem do uso de Typescript está na adição de tipos nos atributos e nos parâmetros dos métodos.",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "tsc && node dist"
@@ -304,7 +323,7 @@ Por último, segue o conteúdo do `index.ts`:
 ```ts
 import executarDefault, { executarModulo1 } from './modulo1.js';
 import { executarModulo2 } from './modulo2.js';
-import executarModulo3 from './modulo3.js';
+import executar3 from './modulo3.js';
 
 executarDefault();
 executarModulo1();
@@ -312,7 +331,7 @@ executarModulo2();
 executarModulo3();
 ```
 
-Note que a função `executar` foi exportada como `default` no arquivo `modulo1.ts`, o que permite a sua importação no `index.ts` sem o uso de `{}`: `import executar from './modulo1.js';`
+Note que a função `executar` foi exportada como `default` no arquivo `modulo1.ts`, o que permite a sua importação no `index.ts` sem o uso de `{}`: `import executar from './modulo1.js';`. Note que a importação default (padrão) não obriga que o nome do recurso seja igual ao nome importado: `import ABCD from './modulo1.js';`.
 
 Note também que quando uma função é exportada apenas com `export` (sem **default**), a mesma precisa ser importada com o uso de `{}`: `import { executarModulo1 } from './modulo1.js';`
 
