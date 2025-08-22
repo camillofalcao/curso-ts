@@ -55,3 +55,4 @@ npm run dev
 #### [4) Utilizando Tipos em Objetos na Linguagem Typescript](/P04Objetos)
 #### [5) Classes em Typescript - EM CONSTRUÇÃO](/P05Classes)
 #### [6) Outros Recursos da Linguagem Typescript](/P06Outros)
+#### [7) EXTRA - Programação Funcional](/P07Funcional)
