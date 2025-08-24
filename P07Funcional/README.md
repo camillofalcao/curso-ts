@@ -147,7 +147,7 @@ numeros.forEach(x => {
   if (x % 2 == 0) {
     pares[pares.length] = x;
   } else {
-    impares[pares.length] = x;
+    impares[impares.length] = x;
   }
 });
 
